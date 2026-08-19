@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Kamrul Hasan (Sajid) — Architect</title>
+<meta name="description" content="Portfolio of Md Kamrul Hasan (Sajid), Architect — BUET graduate, BIM Coordinator, human-centered design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --surface:#f6f6f3;
+    --ink:#15171c;
+    --muted:#5c6168;
+    --accent:#33538f;
+    --accent-soft:#e9edf7;
+    --border:#e6e4dd;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.6;}
+  ::selection{background:var(--accent); color:#fff;}
+  a{color:var(--accent); text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',serif; margin:0; letter-spacing:-0.01em;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  /* cursor dot */
+  #cursor-dot{position:fixed; top:0; left:0; width:10px; height:10px; border-radius:50%; background:var(--accent); pointer-events:none; z-index:999; transform:translate(-50%,-50%); transition:transform .08s ease-out, width .15s, height .15s, background .15s;}
+  #cursor-dot.grow{width:26px; height:26px; background:rgba(51,83,143,.28);}
+  @media (max-width:900px),(hover:none){ #cursor-dot{display:none;} }
+
+  header{position:sticky; top:0; z-index:40; background:rgba(255,255,255,.88); backdrop-filter:blur(8px); border-bottom:1px solid var(--border);}
+  .nav-inner{max-width:1080px; margin:0 auto; padding:18px 32px; display:flex; justify-content:space-between; align-items:center;}
+  .nav-mark{font-family:'Fraunces',serif; font-weight:600; font-size:16px;}
+  .nav-links{display:flex; gap:26px; font-size:13.5px; font-weight:500;}
+  .nav-links a{color:var(--ink); opacity:.7;}
+  .nav-links a:hover{opacity:1; color:var(--accent);}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  .hero{padding:110px 0 90px; display:grid; grid-template-columns:1.1fr .9fr; gap:50px; align-items:center;}
+  @media (max-width:820px){ .hero{grid-template-columns:1fr; padding:70px 0 60px;} }
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--accent); background:var(--accent-soft); padding:6px 14px; border-radius:100px; margin-bottom:22px;}
+  .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--accent); position:relative;}
+  .eyebrow .dot::after{content:""; position:absolute; inset:0; border-radius:50%; background:var(--accent); animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(51,83,143,.55);} 70%{box-shadow:0 0 0 9px rgba(51,83,143,0);} 100%{box-shadow:0 0 0 0 rgba(51,83,143,0);}}
+  .hero h1{font-size:clamp(36px,5vw,58px); line-height:1.06; font-weight:600;}
+  .hero .role{font-size:16px; color:var(--muted); margin-top:16px; font-weight:500;}
+  .hero-actions{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{display:inline-block; padding:13px 24px; border-radius:100px; font-weight:600; font-size:14px; transition:transform .15s ease, box-shadow .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--accent); color:#fff;}
+  .btn-primary:hover{box-shadow:0 8px 22px rgba(51,83,143,.32);}
+  .btn-ghost{border:1px solid var(--border); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  .hero-art{width:100%; aspect-ratio:1/1; position:relative;}
+  .hero-art svg{width:100%; height:100%;}
+
+  section{padding:80px 0; border-top:1px solid var(--border);}
+  .sec-eyebrow{font-size:13px; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;}
+  .sec-head h2{font-size:32px; margin-bottom:40px;}
+
+  /* about */
+  .about-grid{display:grid; grid-template-columns:1.3fr .7fr; gap:50px;}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+  .about-grid p{color:#33363d; font-size:16px; margin:0 0 16px;}
+  .stats{display:grid; grid-template-columns:1fr; gap:20px;}
+  .stat{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
+  .stat .num{font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--accent);}
+  .stat .lbl{font-size:13px; color:var(--muted); margin-top:4px;}
+
+  /* timeline */
+  .entry{display:grid; grid-template-columns:170px 1fr; gap:26px; padding:26px 0; border-top:1px solid var(--border); position:relative;}
+  .entry:first-of-type{border-top:none;}
+  .entry .when{font-size:13px; font-weight:600; color:var(--muted); padding-top:3px;}
+  .entry h3{font-size:20px; font-weight:600;}
+  .entry .org{font-size:14.5px; color:var(--accent); margin-top:4px; font-weight:500;}
+  .entry ul{margin:14px 0 0; padding-left:18px; font-size:15px; color:#3a3d43;}
+  .entry li{margin-bottom:6px;}
+  @media (max-width:640px){ .entry{grid-template-columns:1fr; gap:6px;} }
+
+  .course-toggle{margin-top:18px; font-size:13px; font-weight:600; background:none; border:1px solid var(--border); color:var(--muted); padding:8px 16px; border-radius:100px; cursor:pointer;}
+  .course-toggle:hover{border-color:var(--accent); color:var(--accent);}
+  .courses{display:none; margin-top:16px; font-size:14px; color:#3a3d43; line-height:2;}
+  .courses.open{display:block;}
+  .courses div{border-bottom:1px dashed var(--border); padding:5px 0;}
+
+  /* skills */
+  .skill-cats{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media (max-width:760px){ .skill-cats{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .skill-cats{grid-template-columns:1fr;} }
+  .skill-cat{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px;}
+  .skill-cat h4{font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-bottom:12px; font-weight:600;}
+  .skill-cat span{display:inline-block; font-size:13.5px; font-weight:500; background:#fff; border:1px solid var(--border); padding:6px 12px; border-radius:100px; margin:0 6px 6px 0;}
+
+  /* projects */
+  .projects{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:760px){ .projects{grid-template-columns:1fr;} }
+  .card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:26px; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+  .card:hover{transform:translateY(-4px); box-shadow:0 16px 34px rgba(20,22,30,.08); border-color:transparent;}
+  .card h3{font-size:19px; font-weight:600; margin-bottom:8px;}
+  .card p{font-size:14.5px; color:var(--muted); margin:0 0 16px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;}
+  .tag{font-size:11.5px; font-weight:600; color:var(--accent); background:var(--accent-soft); padding:5px 10px; border-radius:100px;}
+  .card a.view{font-size:13.5px; font-weight:600; display:inline-flex; align-items:center; gap:6px;}
+
+  /* contact */
+  #contact{border-bottom:none;}
+  .contact-grid{display:flex; flex-wrap:wrap; gap:40px;}
+  .contact-item .lbl{font-size:12.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:6px; font-weight:600;}
+  .contact-item .val{font-size:16px; font-weight:500;}
+  footer{padding:30px 0 60px; font-size:13px; color:var(--muted); text-align:center;}
+</style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+
+<header>
+  <div class="nav-inner">
+    <div class="nav-mark">Kamrul Hasan Sajid</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="border-top:none;">
+  <div class="wrap" style="display:contents;">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Available for collaboration — Dhaka</div>
+      <h1>Md Kamrul Hasan<br>(Sajid)</h1>
+      <div class="role">Architect — BIM Coordination &amp; Human-Centered Design</div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Get in Touch</a>
+        <a class="btn btn-ghost" href="#projects">View Projects</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="40" width="320" height="320" rx="18" stroke="#e6e4dd" stroke-width="2"/>
+        <rect x="80" y="200" width="90" height="120" stroke="#33538f" stroke-width="2"/>
+        <rect x="190" y="140" width="130" height="180" stroke="#33538f" stroke-width="2" opacity="0.4"/>
+        <line x1="80" y1="200" x2="320" y2="80" stroke="#33538f" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <circle cx="320" cy="80" r="5" fill="#33538f"/>
+        <circle cx="80" cy="200" r="5" fill="#33538f"/>
+        <line x1="60" y1="360" x2="340" y2="360" stroke="#e6e4dd" stroke-width="2"/>
+        <line x1="60" y1="355" x2="60" y2="365" stroke="#e6e4dd" stroke-width="2"/>
+        <line x1="340" y1="355" x2="340" y2="365" stroke="#e6e4dd" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-eyebrow">Profile</div>
+    <div class="sec-head"><h2>About Me</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>I've completed my Bachelor of Architecture (B.Arch) from Bangladesh University of Engineering and Technology (BUET) in 2024. From a clueless freshman to a graduate achieving continuous academic excellence, my bachelor journey shows consistent growth.</p>
+        <p>For my <a href="https://sites.google.com/view/kamrul-hasan-sajid/projects/final-year-project" target="_blank" rel="noopener">undergraduate thesis</a>, I worked on the integration of the ever-changing language of the workplace with urban context and local people — a project that reflects my interest in a human interaction-centric design approach.</p>
+        <p>After graduation, I stepped into design consultancies to put my knowledge into practice, and became an Associate Member (AH-578) of the <a href="https://iab.org.bd/" target="_blank" rel="noopener">Institute of Architects, Bangladesh (IAB)</a>. I aspire to blend design acumen and architectural knowledge into the ever-evolving field of Human-Centered AI research.</p>
+        <p>I love to go on walks now and then.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">2024</div><div class="lbl">B.Arch Graduate, BUET</div></div>
+        <div class="stat"><div class="num">5</div><div class="lbl">Design Projects Featured</div></div>
+        <div class="stat"><div class="num">AH-578</div><div class="lbl">Associate Member, IAB</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-eyebrow">Academics</div>
+    <div class="sec-head"><h2>Education</h2></div>
+
+    <div class="entry">
+      <div class="when">Mar 2017 — Jul 2024</div>
+      <div>
+        <h3>Bachelor of Architecture (B.Arch)</h3>
+        <div class="org"><a href="https://www.buet.ac.bd/web/#/" target="_blank" rel="noopener">Bangladesh University of Engineering &amp; Technology (BUET)</a></div>
+        <p style="font-size:15px; color:#3a3d43; margin:14px 0 0;">
+          Thesis: <a href="https://sites.google.com/view/kamrul-hasan-sajid/projects/final-year-project" target="_blank" rel="noopener">"Incubation Matrix: Designing a Future Co-Working Hub"</a>, supervised by <a href="https://arch.buet.ac.bd/faculty/Dr.%20S%20M%20Najmul%20Imam" target="_blank" rel="noopener">Dr. S M Najmul Imam</a>.
+        </p>
+        <button class="course-toggle" id="courseToggle">+ Show relevant coursework</button>
+        <div class="courses" id="courseList">
+          <div>ARCH 102 — ARCH 502 · Design Studio I – X</div>
+          <div>ARCH 222 · Digital Communication in Architecture</div>
+          <div>ARCH 345 · Fundamentals of Urban Design</div>
+          <div>ARCH 422 · Environmental Simulation</div>
+          <div>ARCH 461 · Survey and Research Methods</div>
+          <div>ARCH 492 · Algorithmic Design in Architecture</div>
+          <div>ARCH 825 · Introduction to Interactive, Smart and Intelligent Architecture</div>
+          <div style="border-bottom:none; padding-top:8px;"><a href="https://arch.buet.ac.bd/undergraduate/barch" target="_blank" rel="noopener">Full B.Arch curriculum →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Jun 2015 — May 2017</div>
+      <div>
+        <h3>Higher Secondary Certificate (HSC)</h3>
+        <div class="org">Notre Dame College, Dhaka</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-eyebrow">Career</div>
+    <div class="sec-head"><h2>Experience</h2></div>
+
+    <div class="entry">
+      <div class="when">Aug 2025 — Present</div>
+      <div>
+        <h3>Executive (Design &amp; Project Management)</h3>
+        <div class="org"><a href="https://suvastuproperties.com/" target="_blank" rel="noopener">Suvastu Properties Limited, Dhaka</a></div>
+        <ul>
+          <li>Working on BIM coordination</li>
+          <li>Project management of several ongoing real estate residential projects</li>
+          <li>Supervision of ongoing construction of commercial &amp; residential projects</li>
+          <li>A research project in Korail Slum</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-eyebrow">Toolkit</div>
+    <div class="sec-head"><h2>Skills</h2></div>
+    <div class="skill-cats">
+      <div class="skill-cat">
+        <h4>Modeling &amp; BIM</h4>
+        <span>Autodesk Revit</span><span>Rhinoceros + Grasshopper</span><span>AutoCAD</span>
+      </div>
+      <div class="skill-cat">
+        <h4>Visual Communication</h4>
+        <span>Adobe Photoshop</span><span>Adobe Illustrator</span><span>Adobe InDesign</span>
+      </div>
+      <div class="skill-cat">
+        <h4>Practice</h4>
+        <span>Project Management</span><span>Construction Supervision</span><span>Design Consultancy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-eyebrow">Selected Work</div>
+    <div class="sec-head"><h2>Projects</h2></div>
+    <div class="projects">
+
+      <div class="card">
+        <h3>Incubation Matrix</h3>
+        <p>Designing a future co-working hub — undergraduate thesis on human interaction-centric workplace design.</p>
+        <div class="tags"><span class="tag">Thesis</span><span class="tag">2024</span></div>
+        <a class="view" href="https://sites.google.com/view/kamrul-hasan-sajid/projects/final-year-project" target="_blank" rel="noopener">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>Urban Transit</h3>
+        <p>A study on urban mobility infrastructure and its integration within the city fabric.</p>
+        <div class="tags"><span class="tag">Urban Design</span></div>
+        <a class="view" href="https://sites.google.com/view/kamrul-hasan-sajid/projects/urban-transit" target="_blank" rel="noopener">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>Urban Waterfront</h3>
+        <p>Reimagining the city's waterfront as a public, ecological, and civic resource.</p>
+        <div class="tags"><span class="tag">Urban Design</span></div>
+        <a class="view" href="https://sites.google.com/d/1kULAjDBr4C0uHQPCIUoS0v-GSLvA54OU/p/1_mzUVXTpGxQcEDDmRkEvJMkbXSaRCxoL/edit" target="_blank" rel="noopener">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>Edible Playscapes</h3>
+        <p>Designing edible playscapes in underutilized urban areas, blending play, food, and public space.</p>
+        <div class="tags"><span class="tag">Landscape</span></div>
+        <a class="view" href="https://sites.google.com/view/kamrul-hasan-sajid/projects/edible-playscapes" target="_blank" rel="noopener">View Project →</a>
+      </div>
+
+      <div class="card">
+        <h3>Algorithmic Thinking in Design</h3>
+        <p>Urban area analysis using algorithmic and computational design methods.</p>
+        <div class="tags"><span class="tag">Computational</span></div>
+        <a class="view" href="https://sites.google.com/view/kamrul-hasan-sajid/projects/algorithmic-thinking" target="_blank" rel="noopener">View Project →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-eyebrow">Reach Out</div>
+    <div class="sec-head"><h2>Get in Touch</h2></div>
+    <div class="contact-grid">
+      <div class="contact-item"><div class="lbl">Address</div><div class="val">Dhaka, Bangladesh</div></div>
+      <div class="contact-item"><div class="lbl">Mobile</div><div class="val">+880 1521 570172</div></div>
+      <div class="contact-item"><div class="lbl">Email</div><div class="val"><a href="mailto:kamrulhasansajid@gmail.com">kamrulhasansajid@gmail.com</a></div></div>
+      <div class="contact-item"><div class="lbl">IAB</div><div class="val">Associate Member (AH-578)</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Md Kamrul Hasan (Sajid) — Built on GitHub Pages</footer>
+
+<script>
+  var cursorDot = document.getElementById('cursor-dot');
+  document.addEventListener('mousemove', function(e){
+    cursorDot.style.left = e.clientX + 'px';
+    cursorDot.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .card').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ cursorDot.classList.add('grow'); });
+    el.addEventListener('mouseleave', function(){ cursorDot.classList.remove('grow'); });
+  });
+  document.getElementById('courseToggle').addEventListener('click', function(){
+    var list = document.getElementById('courseList');
+    var open = list.classList.toggle('open');
+    this.textContent = open ? '− Hide relevant coursework' : '+ Show relevant coursework';
+  });
+</script>
+
+</body>
+</html>
